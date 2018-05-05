@@ -1,4 +1,0 @@
-User-agent: *
-Disallow: 
-
-Sitemap: http://hasitha.github.io/sitemap.xml 
