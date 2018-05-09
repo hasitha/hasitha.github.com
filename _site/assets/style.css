@@ -72,7 +72,7 @@ pre {
   overflow-x: auto; }
 
 code {
-  color: #DC3918;
+  color: #ff69b4;
   font-size: 16px;
   padding: 1px 4px; }
 
@@ -216,10 +216,10 @@ code {
   fill: #E74727; }
 
 .header-link:hover {
-  color: #DC3918 !important; }
+  color: #ff69b4 !important; }
 
 .text-accent {
-  color: #DC3918; }
+  color: #ff69b4; }
 
 /* Layout utilities */
 .container {
@@ -471,7 +471,7 @@ code {
   font-weight: bold;
   text-decoration: none; }
   .link-primary:hover {
-    color: #DC3918;
+    color: #ff69b4;
     text-decoration: none; }
 
 .h0 {
