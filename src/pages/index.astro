@@ -15,14 +15,11 @@ const arrow =
     <!-- ===================== HERO ===================== -->
     <section id="top" class="hero">
       <div class="wrap">
-        <h1 class="hero-title">I build products, and I help engineers become better leaders.</h1>
+        <h1 class="hero-title">I help companies ship real value, and build the leaders behind it.</h1>
         <p class="hero-lede">
           I'm a product-focused engineering leader based in Toronto, and currently the CTO of
-          Precision Nutrition. I also run two companies of my own:{' '}
+          Precision Nutrition. Alongside that, I run{' '}
           <a href="#work">Infinitech Studios</a> and <a href="#work">Purpose Driven Leader</a>.
-        </p>
-        <p class="hero-note">
-          Before Precision Nutrition, I led engineering teams at Shopify and PathFactory.
         </p>
       </div>
     </section>
@@ -31,8 +28,7 @@ const arrow =
     <section id="work" class="section">
       <div class="wrap">
         <div class="section-head">
-          <h2>Two companies</h2>
-          <p class="section-sub">One builds products. One builds leaders.</p>
+          <h2>What I'm building</h2>
         </div>
 
         <div class="companies">
@@ -60,14 +56,14 @@ const arrow =
         <div class="section-head">
           <h2>Writing</h2>
           <p class="section-sub">
-            Essays on engineering leadership, published at Purpose Driven Leader.
+            My thoughts, learnings, and opinions.
           </p>
         </div>
 
         <ul class="posts">
           {posts.map((p) => (
             <li>
-              <a class="post" href={p.url} rel="noopener">
+              <a class="post" href={p.url} target="_blank" rel="noopener">
                 <span class="post-tag meta">{p.tag}</span>
                 <span class="post-title">{p.title}</span>
                 <span class="post-read">
@@ -102,16 +98,17 @@ const arrow =
           </div>
           <div class="bio">
             <p>
-              I've spent two decades building software and the teams that make it: leading
-              engineering through growth, and now building a couple of things of my own.
+              I've spent 20+ years in software, most of it leading engineering
+              teams through fast growth. Over time, that pulled me in two directions I enjoy
+              equally: helping companies build the right products, and helping the people
+              behind them grow into strong leaders.
             </p>
             <p>
-              Along the way I've cared less about titles and more about the people doing the
-              work, which is the thread that runs through everything here.
+              When I'm not writing code, I play the violin, and I perform as a magician / mentalist.
             </p>
           </div>
           <div class="experience">
-            <p class="meta exp-label">Experience</p>
+            <p class="meta exp-label">My journey</p>
             <ul class="exp-list">
               {provenance.map((e) => (
                 <li>
@@ -201,7 +198,6 @@ const arrow =
     transition: text-decoration-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
   }
   .hero-lede a:hover { text-decoration-color: var(--accent); color: var(--accent-hover); }
-  .hero-note { margin-top: 1.25rem; color: var(--faint); font-size: 1rem; max-width: 50ch; }
 
   /* sections */
   .section { position: relative; padding: var(--section-y) 0; }

@@ -23,7 +23,7 @@ export const ventures: Venture[] = [
     id: 'infinitech',
     name: 'Infinitech Studios',
     blurb:
-      'Custom software development for startups, focused on the zero-to-one stage: validating and refining the idea, prototyping and testing, then building and launching.',
+      'Custom software development agency that helps startups build, validate and launch new products.',
     url: 'https://infinitechstudios.com/',
     logo: '/logos/infinitech.png',
     logoDark: '/logos/infinitech-dark.png',
@@ -32,7 +32,7 @@ export const ventures: Venture[] = [
     id: 'pdl',
     name: 'Purpose Driven Leader',
     blurb:
-      'Leadership training for engineers who have been promoted into leadership roles, at companies of any scale. The flagship is the Effective Leader program, focused on the craft of leadership.',
+      'Coaching and training that helps engineering leaders get better at the craft of leadership.',
     url: 'https://purposedrivenleader.ca/',
     logo: '/logos/pdl.png',
     logoDark: '/logos/pdl-dark.png',
