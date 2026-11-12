@@ -4,7 +4,6 @@ description: A quiet, typography-led personal hub - one grotesque, one ink-blue 
 colors:
   bg: "#faf8f3"
   surface: "#f2efe7"
-  chip: "#f5f2eb"
   text: "#1b1a16"
   muted: "#5b574e"
   faint: "#67625a"
@@ -128,7 +127,6 @@ A warm, low-chroma paper-and-ink palette with a single cool accent; the dark mod
 ### Neutral
 - **Paper** (`#faf8f3` light / `#131418` dark): The page background (`--bg`); also the browser `theme-color`. Warm off-white by day, near-black by night.
 - **Surface** (`#f2efe7` light / `#1d1f25` dark): The half-tone raised plane - the logo chip, portrait frame, and portrait placeholder background. One step off the page, bordered by a hairline, never shadowed.
-- **Chip** (`#f5f2eb`): A lighter paper tone declared for the logo chip and intended to stay light in both modes. See Named Rules - the shipped chip actually paints with `surface`, so this token is currently inert.
 - **Text** (`#1b1a16` light / `#ece9e1` dark): Primary reading ink and all headings.
 - **Muted** (`#5b574e` light / `#9d998e` dark): Secondary ink - ledes, blurbs, bios, section subheads, nav links at rest. Tuned for ~4.5:1 on the page.
 - **Faint** (`#67625a` light / `#95907f` dark): Tertiary ink - the hero note, uppercase micro-labels, experience roles, colophon, and placeholder text.
