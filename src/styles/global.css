@@ -26,8 +26,10 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Dark palette. Applies when the OS prefers dark (unless the viewer has
+   explicitly chosen light), or whenever the viewer explicitly chooses dark. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --bg: #131418;
     --surface: #1d1f25;
     --text: #ece9e1;
@@ -39,6 +41,18 @@
     --line: rgba(236, 233, 225, 0.11);
     --line-strong: rgba(236, 233, 225, 0.2);
   }
+}
+:root[data-theme='dark'] {
+  --bg: #131418;
+  --surface: #1d1f25;
+  --text: #ece9e1;
+  --muted: #9d998e;
+  --faint: #95907f;
+  --accent: #83a6e8;
+  --accent-hover: #9cb8ee;
+  --on-accent: #10131c;
+  --line: rgba(236, 233, 225, 0.11);
+  --line-strong: rgba(236, 233, 225, 0.2);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -120,6 +134,49 @@ p { text-wrap: pretty; }
 }
 .skip-link:hover { color: var(--on-accent); }
 .skip-link:focus { transform: translateY(0); }
+
+/* Company marks follow the resolved theme (OS preference or manual toggle). */
+.logo-chip .logo-light { display: block; }
+.logo-chip .logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .logo-chip .logo-light { display: none; }
+  :root:not([data-theme='light']) .logo-chip .logo-dark { display: block; }
+}
+:root[data-theme='dark'] .logo-chip .logo-light { display: none; }
+:root[data-theme='dark'] .logo-chip .logo-dark { display: block; }
+:root[data-theme='light'] .logo-chip .logo-light { display: block; }
+:root[data-theme='light'] .logo-chip .logo-dark { display: none; }
+
+/* Theme toggle button */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 9px;
+  cursor: pointer;
+  transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out);
+}
+.theme-toggle:hover { color: var(--text); border-color: var(--faint); }
+.theme-toggle svg { width: 17px; height: 17px; }
+
+/* Icon reflects the resolved theme: moon = currently light (click for dark),
+   sun = currently dark (click for light). */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .theme-toggle .icon-sun { display: block; }
+  :root:not([data-theme='light']) .theme-toggle .icon-moon { display: none; }
+}
+:root[data-theme='dark'] .theme-toggle .icon-sun { display: block; }
+:root[data-theme='dark'] .theme-toggle .icon-moon { display: none; }
+:root[data-theme='light'] .theme-toggle .icon-sun { display: none; }
+:root[data-theme='light'] .theme-toggle .icon-moon { display: block; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -9,6 +9,9 @@ export const site = {
     'Twenty years spent building software, teams and companies, and caring about the people inside them.',
   intro:
     "Based in Toronto, I've spent two decades building software and the teams that make it: leading engineering through growth, and now building a couple of things of my own. This is where that work, and the rest of me, lives.",
+  // Portrait for the hero. Drop a file in public/ (e.g. public/portrait.jpg)
+  // and set this to its path (e.g. '/portrait.jpg'). Empty = placeholder frame.
+  portrait: '/portrait.jpg',
 };
 
 export type Venture = {

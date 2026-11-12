@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import { ventures, provenance, posts } from '../data/site';
+import { site, ventures, provenance, posts } from '../data/site';
 
 const arrow =
   '<svg class="arrow" viewBox="0 0 22 12" fill="none" aria-hidden="true"><path d="M1 6h18m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -39,10 +39,8 @@ const arrow =
           {ventures.map((v) => (
             <article class="company">
               <span class="logo-chip">
-                <picture>
-                  <source srcset={v.logoDark} media="(prefers-color-scheme: dark)" />
-                  <img src={v.logo} alt={`${v.name} logo`} width="40" height="40" loading="lazy" />
-                </picture>
+                <img class="logo-light" src={v.logo} alt={`${v.name} logo`} width="40" height="40" loading="lazy" />
+                <img class="logo-dark" src={v.logoDark} alt="" aria-hidden="true" width="40" height="40" loading="lazy" />
               </span>
               <h3 class="company-name">{v.name}</h3>
               <p class="company-desc">{v.blurb}</p>
@@ -89,6 +87,19 @@ const arrow =
           <h2>About</h2>
         </div>
         <div class="about-body">
+          <div class="about-portrait">
+            {site.portrait ? (
+              <img src={site.portrait} alt="Hasitha Pathiraja" width="400" height="400" loading="lazy" />
+            ) : (
+              <div class="portrait-placeholder" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="9" r="3.4" />
+                  <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+                </svg>
+                <span>Portrait</span>
+              </div>
+            )}
+          </div>
           <div class="bio">
             <p>
               I've spent two decades building software and the teams that make it: leading
@@ -120,13 +131,61 @@ const arrow =
 
 <style>
   .hero {
+    position: relative;
+    overflow: hidden;
     padding-top: clamp(3.5rem, 9vw, 7rem);
     padding-bottom: clamp(2rem, 5vw, 4rem);
   }
+  /* soft ambient accent wash - the hero's quiet visual treatment */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      68% 70% at 84% 6%,
+      color-mix(in srgb, var(--accent) 13%, transparent),
+      transparent 66%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero > .wrap { position: relative; z-index: 1; }
   .hero-title {
-    font-size: clamp(2.4rem, 6vw, 4.25rem);
-    max-width: 18ch;
+    font-size: clamp(2.5rem, 6.6vw, 4.75rem);
+    max-width: 17ch;
     letter-spacing: -0.035em;
+  }
+
+  /* portrait frame - shared by the About portrait and its placeholder */
+  .about-portrait img,
+  .portrait-placeholder {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+    border: 1px solid var(--line-strong);
+  }
+  .about-portrait img {
+    object-fit: cover;
+    display: block;
+    background: var(--surface);
+  }
+  .portrait-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    color: var(--faint);
+  }
+  .portrait-placeholder svg { width: 52px; height: 52px; }
+  .portrait-placeholder span {
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .hero-lede {
     margin-top: clamp(1.5rem, 3vw, 2.25rem);
@@ -196,7 +255,7 @@ const arrow =
     border-radius: 14px;
     margin-bottom: 1.5rem;
   }
-  .logo-chip img { width: 40px; height: 40px; object-fit: contain; display: block; }
+  .logo-chip img { width: 40px; height: 40px; object-fit: contain; }
   .company-name { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
   .company-desc {
     margin: 0.85rem 0 1.4rem;
@@ -244,10 +303,11 @@ const arrow =
   /* about */
   .about-body {
     display: grid;
-    grid-template-columns: 1fr 15rem;
-    gap: clamp(2rem, 6vw, 5rem);
+    grid-template-columns: clamp(150px, 16vw, 190px) minmax(0, 1fr) 14rem;
+    gap: clamp(1.75rem, 4vw, 3.25rem);
     align-items: start;
   }
+  .about-portrait { width: 100%; }
   .bio { max-width: var(--measure); display: flex; flex-direction: column; gap: 1.1rem; }
   .bio p { color: var(--muted); font-size: 1.12rem; }
   .exp-label { margin-bottom: 1rem; }
@@ -259,6 +319,7 @@ const arrow =
   @media (max-width: 760px) {
     .companies { grid-template-columns: 1fr; }
     .about-body { grid-template-columns: 1fr; }
+    .about-portrait { max-width: 190px; }
     .post { grid-template-columns: 1fr auto; gap: 0.3rem 1rem; }
     .post-tag { grid-column: 1; }
     .post-title { grid-column: 1 / -1; }
