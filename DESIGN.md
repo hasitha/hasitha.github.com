@@ -1,242 +1,244 @@
 ---
-name: The Exhibition Wall
-description: A warm black-box gallery where a working life and two ventures hang as labeled objects.
+name: Hasitha Pathiraja
+description: A quiet, typography-led personal hub - one grotesque, one ink-blue accent, warm paper light and dark.
 colors:
-  wall: "#23211d"
-  wall-deep: "#16140f"
-  wall-lift: "#2d2a23"
-  wall-line: "rgba(230, 179, 107, 0.26)"
-  paper: "#f1ebdd"
-  paper-edge: "#e3dac6"
-  cream: "#ece3d2"
-  cream-dim: "#cfc9bc"
-  cream-faint: "#a39c8d"
-  ink: "#231f1a"
-  ink-soft: "#48423a"
-  ink-faint: "#6a6356"
-  brass: "#c6822e"
-  brass-lt: "#e6b36b"
-  brass-dk: "#8a4e14"
-  on-brass: "#1c1305"
+  bg: "#faf8f3"
+  surface: "#f2efe7"
+  chip: "#f5f2eb"
+  text: "#1b1a16"
+  muted: "#5b574e"
+  faint: "#67625a"
+  accent: "#1f3f7a"
+  accent-hover: "#2a4f93"
+  on-accent: "#ffffff"
+  line: "#e7e2d6"
+  line-strong: "#d7d1c3"
+  bg-dark: "#131418"
+  surface-dark: "#1d1f25"
+  text-dark: "#ece9e1"
+  muted-dark: "#9d998e"
+  faint-dark: "#95907f"
+  accent-dark: "#83a6e8"
+  accent-hover-dark: "#9cb8ee"
+  on-accent-dark: "#10131c"
+  line-dark: "rgba(236, 233, 225, 0.11)"
+  line-strong-dark: "rgba(236, 233, 225, 0.2)"
 typography:
   display:
-    fontFamily: "Bricolage Grotesque Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2.7rem, 6.6vw, 5.4rem)"
-    fontWeight: 800
-    lineHeight: 0.98
+    fontFamily: "Geist Variable, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "clamp(2.5rem, 6.6vw, 4.75rem)"
+    fontWeight: 600
+    lineHeight: 1.04
     letterSpacing: "-0.035em"
   headline:
-    fontFamily: "Bricolage Grotesque Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(2rem, 4.2vw, 3.3rem)"
-    fontWeight: 800
-    lineHeight: 0.98
-    letterSpacing: "-0.035em"
+    fontFamily: "Geist Variable, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "clamp(1.6rem, 3vw, 2.25rem)"
+    fontWeight: 600
+    lineHeight: 1.04
+    letterSpacing: "-0.03em"
   title:
-    fontFamily: "Bricolage Grotesque Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(1.4rem, 2.2vw, 1.8rem)"
-    fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: "-0.02em"
+    fontFamily: "Geist Variable, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "clamp(1.35rem, 2.2vw, 1.75rem)"
+    fontWeight: 600
+    lineHeight: 1.04
+    letterSpacing: "-0.03em"
   body:
-    fontFamily: "Hanken Grotesk Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "clamp(1rem, 0.95rem + 0.2vw, 1.0625rem)"
+    fontFamily: "Geist Variable, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "clamp(1rem, 0.96rem + 0.2vw, 1.09rem)"
     fontWeight: 400
-    lineHeight: 1.6
-    letterSpacing: "0em"
+    lineHeight: 1.65
+    fontFeature: "'ss01', 'cv01'"
   label:
-    fontFamily: "Hanken Grotesk Variable, ui-sans-serif, system-ui, sans-serif"
-    fontSize: "0.72rem"
-    fontWeight: 700
+    fontFamily: "Geist Variable, ui-sans-serif, system-ui, -apple-system, sans-serif"
+    fontSize: "0.74rem"
+    fontWeight: 500
     lineHeight: 1.2
-    letterSpacing: "0.2em"
+    letterSpacing: "0.12em"
 rounded:
-  sm: "2px"
-  md: "3px"
-  lg: "4px"
+  sm: "4px"
+  md: "9px"
+  lg: "14px"
+  xl: "18px"
   pill: "100px"
 spacing:
-  gutter: "clamp(1.25rem, 4.5vw, 4rem)"
-  section-y: "clamp(3.75rem, 7vw, 6.25rem)"
-  maxw: "1240px"
+  gutter: "clamp(1.25rem, 5vw, 3rem)"
+  section-y: "clamp(4rem, 9vw, 7.5rem)"
+  maxw: "1080px"
+  measure: "66ch"
 components:
-  button-primary:
-    backgroundColor: "{colors.brass}"
-    textColor: "{colors.on-brass}"
+  skip-link:
+    backgroundColor: "{colors.accent}"
+    textColor: "{colors.on-accent}"
     rounded: "{rounded.sm}"
-    padding: "0.85rem 1.4rem"
-  button-primary-hover:
-    backgroundColor: "{colors.brass-lt}"
-    textColor: "{colors.on-brass}"
-  button-ghost:
-    textColor: "{colors.cream}"
-    rounded: "{rounded.sm}"
-    padding: "0.85rem 1.4rem"
-  button-ghost-hover:
-    textColor: "{colors.brass-lt}"
-  paper-label:
-    backgroundColor: "{colors.paper}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.sm}"
-    padding: "0.85rem 1rem"
-  exhibit-card:
-    backgroundColor: "{colors.wall-lift}"
-    textColor: "{colors.cream}"
+    padding: "0.5rem 1rem"
+  theme-toggle:
+    backgroundColor: "transparent"
+    textColor: "{colors.muted}"
+    rounded: "{rounded.md}"
+    size: "36px"
+  theme-toggle-hover:
+    textColor: "{colors.text}"
+  logo-chip:
+    backgroundColor: "{colors.surface}"
     rounded: "{rounded.lg}"
+    padding: "11px"
+  portrait-frame:
+    backgroundColor: "{colors.surface}"
+    rounded: "{rounded.xl}"
+  inline-link:
+    textColor: "{colors.accent}"
   nav-link:
-    textColor: "{colors.cream-dim}"
-    typography: "{typography.label}"
-  onview-tag:
-    backgroundColor: "{colors.brass}"
-    textColor: "{colors.on-brass}"
-    rounded: "{rounded.pill}"
-    padding: "0.4rem 0.8rem"
+    textColor: "{colors.muted}"
+  nav-link-hover:
+    textColor: "{colors.text}"
+  footer-link:
+    textColor: "{colors.text}"
+  footer-link-hover:
+    textColor: "{colors.accent}"
 ---
 
-# Design System: The Exhibition Wall
+# Design System: Hasitha Pathiraja
 
 ## Overview
 
-**Creative North Star: "The Warm Black-Box Gallery"**
+**Creative North Star: "The Quiet Reading Room"**
 
-This is a personal site staged as a curated museum exhibition - "The Work & Worlds of Hasitha Pathiraja." A twenty-year builder and his two ventures do not sit in a centered-avatar bio or a loud developer portfolio; they hang as labeled objects on a painted gallery wall, and the institution's calm authority does the vouching so credibility never reads as bragging. The room is a warm black box: a near-black charcoal wall lit by a soft vignette, warm paper wall-labels that glow against it, and brass used with conviction for rules, tags, and object numbers.
+This is a one-page personal hub that reads like a page from a well-set book, not a dashboard. A twenty-year engineering leader and his two ventures are presented in a calm, left-aligned column of warm paper, where restraint is the credibility signal: no hero image, no stock photography, no decorative chrome. One typeface (Geist) carries the whole hierarchy through size and weight alone, and a single deep ink-blue accent is spent sparingly - on links, the focus ring, the "Read" and "Visit" affordances, and one soft wash behind the hero headline. Everything else is paper, ink, and hairlines.
 
-The density is a salon hang - objects stacked close, each with its own matted plate and printed caption. Surfaces are quiet and dark; the paper labels are the only bright planes, and they carry a letterpress materiality (fractal-noise grain, a pressed-paper inset highlight, a debossed text-shadow) so they read as physical cards pinned to the wall rather than flat UI panels. Motion is restrained and lighting-led: a warm radial "picture-light" tracks the cursor across the hero wall, and framed objects lift and brighten on hover, as if a gallery light swung toward them.
+The density is editorial and airy. Sections stack in a single centered measure, separated by full-bleed hairline rules rather than boxes or cards, with generous fluid rhythm between them. Depth is almost entirely absent: there are no drop shadows anywhere. Surfaces lift by a half-tone of warm paper (`surface`) and a 1px hairline border, never by floating. The one atmospheric gesture is a low-opacity radial wash of the accent in the top-right of the hero - the single place the world allows itself any color beyond ink.
 
-The world is recognizable with all content removed: charcoal wall + glowing paper labels + brass rules. It rejects the template personal-site (centered avatar, one-line bio) and the maximal developer portfolio in equal measure.
+The world is deliberately dual-native: a warm off-white day mode and a cool near-black night mode, driven by the OS preference and overridable by a persistent manual toggle, applied before paint so there is no flash. It rejects the loud developer portfolio and the centered-avatar template in equal measure; authority comes from quiet precision, Canadian plainness of voice, and letting the track record speak without ornament.
 
 **Key Characteristics:**
-- Warm near-black charcoal wall with a soft radial vignette, fixed to the viewport.
-- Glowing warm-paper wall-labels with letterpress materiality (grain, inset highlight, debossed text).
-- Brass as the single accent - rules, hairlines, object numbers, tags, the one filled button.
-- Two-font system: Bricolage Grotesque (display, heavy, tight) over Hanken Grotesk (body and micro-labels).
-- Framed "object" plates with a 1px brass inner mat and a cursor-reactive picture-light.
-- Salon-hang density; museum wall-label captions (object numbers, specs, provenance).
+- One typeface (Geist), one accent (deep ink blue); hierarchy from scale and weight only.
+- Warm paper palette in light, cool charcoal in dark - the same system, two native skins.
+- No shadows: depth is tonal surfaces and 1px hairlines, never float.
+- Full-bleed hairline rules separate sections; content sits in a single 1080px column at a 66ch measure.
+- Tightly tracked, balanced headings (-0.03em, `text-wrap: balance`) over a relaxed 1.65 body.
+- The only visual treatment is one soft radial accent wash behind the hero headline.
 
 ## Colors
 
-A warm, low-key palette: a charcoal ground, a single family of glowing paper, cream inks for text on the wall, dark inks for text on paper, and brass as the only true accent.
+A warm, low-chroma paper-and-ink palette with a single cool accent; the dark mode is the same roles retuned to a cool charcoal ground, not a separate world.
 
 ### Primary
-- **Brass** (`#c6822e`): The one accent, used with conviction. Hairline rules and dividers (`--wall-line` is brass at 26% alpha), the filled primary button, the timeline spine, the "On view" status tag, scrollbar thumb, and selection background. It is the color that vouches.
-- **Brass Light** (`#e6b36b`): Brass tuned for small text and glints on the dark wall - the hero name accent, eyebrow/micro-labels on charcoal, the monogram marks inside frames, the focus ring, and the warm core of the picture-light gradient.
-- **Brass Dark** (`#8a4e14`): Brass tuned for small text on the bright paper labels - object numbers ("Object 01") and the "Visit" link where brass-on-paper needs contrast.
+- **Ink Blue** (`#1f3f7a` light / `#83a6e8` dark): The one accent. Spent on text links, the `:focus-visible` outline, the skip link fill, the "Read ->" and "Visit" affordances, post-title hover, selection tint, the hero radial wash, and footer-link hover. In dark mode it lightens to a sky ink (`#83a6e8`) to hold contrast on charcoal.
+- **Ink Blue Hover** (`#2a4f93` light / `#9cb8ee` dark): The hover tone for links and accent text, one step brighter than the resting accent.
 
 ### Neutral
-- **Wall** (`#23211d`): The gallery ground and page background; also the `theme-color`.
-- **Wall Deep** (`#16140f`): The vignette's far corners, scrollbar track, sticky-header base, and the dark end of frame gradients.
-- **Wall Lift** (`#2d2a23`): The near corner of the vignette and the lit end of frame/card gradients.
-- **Wall Line** (`rgba(230,179,107,0.26)`): Every hairline border and divider - brass at low alpha, never a neutral gray line.
-- **Paper** (`#f1ebdd`): The wall-label plane - the bright warm card the labels print on.
-- **Paper Edge** (`#e3dac6`): The darker paper tone reserved for label edges.
-- **Cream / Cream Dim / Cream Faint** (`#ece3d2` / `#cfc9bc` / `#a39c8d`): The three-step ink ramp for text *on the wall* - body cream, secondary standfirst/bio, and faint captions/credits.
-- **Ink / Ink Soft / Ink Faint** (`#231f1a` / `#48423a` / `#6a6356`): The three-step ink ramp for text *on paper labels* - headings, body line, and spec text.
-- **On Brass** (`#1c1305`): The near-black ink used for text sitting on a brass fill (primary button, "On view" tag).
+- **Paper** (`#faf8f3` light / `#131418` dark): The page background (`--bg`); also the browser `theme-color`. Warm off-white by day, near-black by night.
+- **Surface** (`#f2efe7` light / `#1d1f25` dark): The half-tone raised plane - the logo chip, portrait frame, and portrait placeholder background. One step off the page, bordered by a hairline, never shadowed.
+- **Chip** (`#f5f2eb`): A lighter paper tone declared for the logo chip and intended to stay light in both modes. See Named Rules - the shipped chip actually paints with `surface`, so this token is currently inert.
+- **Text** (`#1b1a16` light / `#ece9e1` dark): Primary reading ink and all headings.
+- **Muted** (`#5b574e` light / `#9d998e` dark): Secondary ink - ledes, blurbs, bios, section subheads, nav links at rest. Tuned for ~4.5:1 on the page.
+- **Faint** (`#67625a` light / `#95907f` dark): Tertiary ink - the hero note, uppercase micro-labels, experience roles, colophon, and placeholder text.
+- **Line** (`#e7e2d6` light / `rgba(236,233,225,0.11)` dark): The hairline for section rules, post-row dividers, and the header/footer borders.
+- **Line Strong** (`#d7d1c3` light / `rgba(236,233,225,0.2)` dark): The stronger hairline for component borders (logo chip, portrait, theme toggle), underlined hero links, footer-link underlines, and the scrollbar thumb.
+- **On Accent** (`#ffffff` light / `#10131c` dark): Text on an accent fill - the skip link.
 
 ### Named Rules
-**The Brass-Line Rule.** Every border, divider, and rule is brass at low alpha (`--wall-line`), never a neutral gray. Hairlines are a material in this room, not a UI afterthought.
+**The One-Accent Rule.** Ink blue is the only non-neutral hue in the system. There is no secondary or tertiary color; variety comes from the paper/ink neutral ramp and the one accent-hover step, never from a new color.
 
-**The Two-Ink Rule.** Text on the wall uses the cream ramp; text on paper uses the ink ramp. Never put cream ink on a paper label or dark ink on the wall - the surface dictates the ink.
+**The Twin-Skin Rule.** Every color is a role, not a fixed hex. The same token name resolves to a warm value in light and a cool value in dark; always author against the role (`var(--muted)`), never a literal hex, so both skins stay correct.
 
-**The One-Accent Rule.** Brass is the only accent. There is no secondary or tertiary hue; depth and variety come from the three brass tunings (`brass` / `brass-lt` / `brass-dk`) chosen by surface, not from new colors.
+**The Hairline Rule.** Every border and divider is a 1px hairline in `line` or `line-strong` - never a gray box, never a shadow. `line` separates content (section rules, post rows); `line-strong` outlines components and the scrollbar.
 
 ## Typography
 
-**Display Font:** Bricolage Grotesque Variable (fallback `ui-sans-serif, system-ui, sans-serif`)
-**Body / Label Font:** Hanken Grotesk Variable (fallback `ui-sans-serif, system-ui, sans-serif`)
+**Sole Typeface:** Geist Variable (self-hosted via `@fontsource-variable/geist`), with fallback `ui-sans-serif, system-ui, -apple-system, sans-serif`.
 
-Both are self-hosted via `@fontsource-variable`. Bricolage brings a slightly idiosyncratic, heavy display voice; Hanken is a clean, neutral grotesque for reading and for the micro-labels. The pairing reads as a modern museum: confident catalogue titles over quiet, legible caption type.
-
-**Character:** Headings are set heavy (800) and tight (-0.035em, line-height 0.98) so titles pack into a dense, carved block. Captions and object numbers are wide-tracked uppercase - the printed-label voice.
+**Character:** One clean, contemporary grotesque does everything. The whole hierarchy is built from size and weight, not from a second face. Body text runs the `ss01` and `cv01` stylistic sets for a slightly warmer, more humanist read; headings are heavier (600) and tightly tracked so titles read as compact, confident blocks rather than airy display type.
 
 ### Hierarchy
-- **Display** (800, `clamp(2.7rem, 6.6vw, 5.4rem)`, line-height 0.98, -0.035em): The hero title only - "The Work & Worlds of..." The brass-light `.accent` span carries the name.
-- **Headline** (800, `clamp(2rem, 4.2vw, 3.3rem)`, 0.98, -0.035em): Section titles (Work, Writing, About) and the footer invite.
-- **Title** (700, `clamp(1.4rem, 2.2vw, 1.8rem)`, -0.02em): Exhibit names, provenance orgs, and note titles - the object headings inside cards and labels.
-- **Body** (400, `clamp(1rem, 0.95rem + 0.2vw, 1.0625rem)`, line-height 1.6): Standfirst, bios, blurbs. Reading measures are held tight - `34ch` standfirst, `46ch` bio, `52ch` section intros.
-- **Label** (600-700, `0.72rem`, letter-spacing `0.14em`-`0.22em`, UPPERCASE): Object numbers, tags, specs, nav items, credits, status pills. The pervasive printed-caption voice.
+- **Display** (600, `clamp(2.5rem, 6.6vw, 4.75rem)`, line-height 1.04, `-0.035em`): The hero headline only, capped at a 17ch measure, `text-wrap: balance`.
+- **Headline** (600, `clamp(1.6rem, 3vw, 2.25rem)`, 1.04, `-0.03em`): Section titles (Two companies, Writing, About). The footer invite "Get in touch" is the one larger variant (`clamp(1.8rem, 4vw, 2.6rem)`).
+- **Title** (600, `clamp(1.35rem, 2.2vw, 1.75rem)`, 1.04, `-0.03em`): Company names. Writing post titles are a lighter sibling (500, `clamp(1.15rem, 2vw, 1.4rem)`, `-0.02em`) that tints to the accent on hover.
+- **Body** (400, `clamp(1rem, 0.96rem + 0.2vw, 1.09rem)`, line-height 1.65, `ss01`/`cv01`): Bios and blurbs, held to the 66ch `measure`. The hero lede is a larger lead-in (`clamp(1.15rem, 1.4vw, 1.4rem)`, line-height 1.5, muted, 54ch); section subheads sit at 1.1rem muted.
+- **Label** (500, `0.74rem`, letter-spacing `0.12em`, UPPERCASE, faint): The `.meta` micro-label - writing post tags, the "Experience" rail heading, and the portrait placeholder caption.
 
 ### Named Rules
-**The Micro-Label Floor Rule.** Uppercase wide-tracked labels never drop below `0.72rem` (about 11px). That is the legibility floor for caption type; object numbers and tags sit at exactly this size.
+**The One-Voice Rule.** There is exactly one typeface. Never introduce a second family for display, mono, or labels; distinction comes from weight (400 body, 500 post titles / labels, 600 headings) and size.
 
-**The Carved-Title Rule.** Display and headline type is always heavy (800) and tight (-0.035em, line-height ~0.98). Titles are dense carved blocks, never airy.
+**The Tight-Heading Rule.** Headings are weight 600, line-height ~1.04, letter-spacing `-0.03em` (hero `-0.035em`), with `text-wrap: balance`. The negative tracking and tight leading are what make titles read as carved blocks.
 
 ## Layout
 
-A single centered column governs everything: `.wrap` is `max-width: 1240px` (`--maxw`) centered with a fluid `--gutter` (`clamp(1.25rem, 4.5vw, 4rem)`) of side padding. Vertical rhythm between sections is `--section-y` (`clamp(3.75rem, 7vw, 6.25rem)`).
+A single centered column governs the whole page. `.wrap` is `max-width: 1080px` (`--maxw`) centered with fluid side padding `--gutter` (`clamp(1.25rem, 5vw, 3rem)`). Reading content is further held to a 66ch `--measure`. Vertical rhythm between sections is `--section-y` (`clamp(4rem, 9vw, 7.5rem)`).
 
-The page is a stack of asymmetric two-column grids that each collapse to one column on small screens:
-- Hero: `1.1fr 0.9fr` (lede beside the salon-hang of objects).
-- Work gallery: `1fr 1fr` exhibit cards.
-- About: `1.2fr 0.8fr` (bio beside the provenance timeline).
-- Footer: `1.3fr 1fr` (invite beside the elsewhere links).
+Sections stack vertically and are separated by a full-bleed 1px `line` rule drawn as a `::before` at the top of each `.section` (edge to edge, not inset to the column). Within sections, content uses asymmetric grids that collapse to one column on small screens:
+- Work: two equal company blocks (`1fr 1fr`, gap `clamp(2.5rem, 6vw, 5rem)`).
+- Writing: a three-column row grid per post (`11rem 1fr auto`) - tag, title, "Read ->".
+- About: a three-track grid `clamp(150px, 16vw, 190px) minmax(0, 1fr) 14rem` - portrait, bio, experience rail.
+- Footer: `1.4fr 1fr` invite beside the elsewhere links.
 
-Breakpoints are two hard stops: at **920px** the hero, gallery, and about grids go single-column; at **620px** the hero object-links and writing notes simplify further (the header has its own stops at 760px and 460px, where the wordmark collapses to "HP"). The hero is a flex column centered to `min(88vh, 860px)`. Density is close and salon-like; whitespace is generous only around section heads (`max-width: 52ch`).
+Breakpoints are a small set of hard stops: at **760px** the companies, about, and post grids reflow to a single column (the post row keeps tag + "Read" on one line and drops the title full-width); the footer collapses at **640px**; the header has its own stops with the wordmark shrinking to "HP" under **460px**. The sticky header is 66px tall. The page is mobile-first and content-led; whitespace does the structural work.
 
 ## Elevation & Depth
 
-Depth is lighting and material, not floating UI. The whole page sits on a fixed radial vignette (`wall-lift` -> `wall` -> `wall-deep`) so the wall itself is lit from the upper-left. Framed objects and paper labels cast deep, soft, downward drop-shadows to read as physical things pinned to the wall, and paper labels add inset highlights/debossing for a letterpress press. Hover does not add a shadow so much as raise and brighten the object (translateY + picture-light opacity).
+This system is flat by doctrine. There are no `box-shadow` drop shadows anywhere in the shipped CSS - not on the header, cards, chips, portrait, or buttons. Depth is conveyed three ways: a half-tone `surface` plane lifting a region off the paper `bg`, a 1px `line`/`line-strong` hairline outlining or separating it, and the sticky header's translucent `backdrop-filter: saturate(1.1) blur(10px)` over a `color-mix` of the background. The only non-structural atmosphere is the hero's radial accent wash.
 
 ### Shadow Vocabulary
-- **Object drop** (`box-shadow: 0 22px 40px -22px rgba(0,0,0,0.7)`): Under framed monogram plates - a deep, soft, downward cast.
-- **Label drop + press** (`box-shadow: 0 20px 40px -24px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,253,245,0.6), inset 0 -1.5px 0 rgba(120,92,44,0.12)`): Paper labels - a drop plus a top inset highlight and bottom inset shade for pressed-paper materiality.
-- **Label press only** (`box-shadow: inset 0 1px 0 rgba(255,253,245,0.55)`): The larger exhibit label, which gets the top highlight without the full drop.
-- **Current-node ring** (`box-shadow: 0 0 0 4px rgba(198,130,46,0.25)`): A soft brass halo on the "Now" provenance node.
-- **Picture-light** (`radial-gradient(90% 70% at 50% -10%, rgba(230,179,107,0.4), transparent 70%)`): Not a shadow but the depth signature - a warm gradient wash inside each frame that brightens from 0.55 to 1 opacity on hover.
+None. The system ships zero drop shadows.
 
 ### Named Rules
-**The Lit-Not-Floating Rule.** Objects gain presence from light (picture-light brightening, a 2-3px lift) rather than from growing shadows. Shadows are deep and static; the hover response is luminance and a small rise.
+**The No-Shadow Rule.** Surfaces never float. A region reads as raised only through a warmer/cooler `surface` fill and a hairline border; if a new surface needs to feel lifted, change its tone and outline it, do not add a shadow.
+
+**The One-Wash Rule.** The hero's radial accent wash (`radial-gradient(68% 70% at 84% 6%, color-mix(in srgb, var(--accent) 13%, transparent), transparent 66%)`) is the only ambient color gesture in the system. Do not add gradients or glows to other sections.
 
 ## Shapes
 
-Corners are barely rounded - this is printed matter, not soft UI. The radius scale is tight: `2px` (sm) for labels, buttons, and the focus ring; `3px` (md) for monogram frames; `4px` (lg) for exhibit cards and the provenance panel. Pills (`100px`) are reserved for status chips (the "On view" tag, the "Forthcoming" badge). Frames carry a signature **1px brass inner mat** - a `::after` border inset 7-14px from the edge at `rgba(230,179,107,0.16)` - that reads as the mat inside a picture frame. Dividers and borders are always 1px brass hairlines (`--wall-line`). Dots and nodes (credit separator, link bullets, timeline nodes) are the only circles.
+Gently rounded, restrained geometry. The radius ramp climbs with the size of the element: `4px` (skip link) and the `3px` focus-ring rounding for small chips, `9px` for the theme-toggle button, `14px` for the logo chip, and `18px` for the square portrait frame; `100px` pills are reserved for the scrollbar thumb only. Signature silhouettes are squares: the company brand marks sit in a ~62px square chip (40px mark + 11px padding) and the portrait is a strict `aspect-ratio: 1 / 1` square. Borders are always 1px hairlines; there are no heavy strokes, no clipping tricks, and no decorative shapes.
 
 ## Components
 
-### Buttons
-- **Shape:** Near-square, `2px` radius (`--rounded.sm`), padding `0.85rem 1.4rem`, weight 600, `0.92rem`.
-- **Primary:** Brass fill (`#c6822e`) with near-black ink (`#1c1305`). Hover lifts `translateY(-2px)` and brightens the fill to brass-light (`#e6b36b`).
-- **Ghost:** Transparent with a 1px brass-hairline border (`--wall-line`) and cream text. Hover shifts both border and text to brass-light.
-- **Transition:** `0.25s var(--ease-out)` on transform, background, and border-color.
+### Theme Toggle
+- **Character:** A quiet 36x36 icon button in the header, the only persistent control.
+- **Shape / color:** Transparent fill, 1px `line-strong` border, `9px` radius (`--rounded.md`); icon in `muted`.
+- **States:** Hover shifts icon to `text` and border to `faint`. The 17px moon/sun SVG swaps to reflect the resolved theme (moon when currently light, sun when currently dark). Click sets `data-theme` on `<html>` and persists to `localStorage`; a pre-paint inline script applies the stored choice before first render to avoid a flash.
 
-### Cards / Containers (Exhibit)
-- **Corner Style:** `4px` (`--rounded.lg`), overflow hidden.
-- **Structure:** A dark framed image zone (16:10, radial `wall-lift -> wall-deep` gradient, 1px brass inner mat, picture-light) over a bright **paper label** footer that holds the object number, title, spec, blurb, and "Visit" link.
-- **Background:** Card body is a translucent `wall-lift -> wall-deep` gradient; border is a 1px brass hairline.
-- **Shadow Strategy:** See Elevation - paper labels carry the press/drop shadows; the dark frame carries the object drop.
-- **Internal Padding:** `1.6rem 1.7rem 1.75rem` on the label; `1.3rem` in the frame.
+### Skip Link
+- **Style:** Accent fill with `on-accent` text, `4px` radius, hidden above the viewport and sliding into view (`translateY`) on focus. The only accent-filled element.
+
+### Logo Chip (signature)
+- **Character:** A square brand-mark tile holding a company's logo in the Work section.
+- **Shape / color:** `surface` background, 1px `line-strong` border, `14px` radius, 11px padding around a 40x40 mark (~62px square).
+- **Behavior:** Each company ships a light and a dark mark (`.logo-light` / `.logo-dark`); CSS shows the correct one for the resolved theme (OS preference or manual toggle), so marks stay legible against the chip in both skins.
+
+### Portrait Frame (signature)
+- **Corner style:** `18px` radius, strict 1 / 1 square (`aspect-ratio`), 1px `line-strong` border, `surface` background, `object-fit: cover`.
+- **Fallback:** A placeholder of the same frame with a centered person SVG and an uppercase "Portrait" caption in `faint`.
+
+### Writing Post Row (signature)
+- **Structure:** A 3-column grid (`11rem 1fr auto`): an uppercase `meta` tag, the post title, and a "Read ->" affordance in accent. Rows are divided by 1px `line` hairlines (top on each, bottom on the last).
+- **States:** On hover the whole row nudges `padding-left: 0.75rem`, the title tints to the accent, and the arrow slides `translateX(4px)`. Transitions use `--ease-out`.
+
+### Inline Link (Visit / Read)
+- **Style:** Accent text, no underline, with a trailing 20x11 arrow SVG; hover slides the arrow `translateX(4px)`. Used for "Visit <domain>" and "Read".
 
 ### Navigation
-- **Header:** Sticky, `68px` tall, with a `blur(8px) saturate(1.1)` backdrop over a `wall-deep -> transparent` gradient and a brass-hairline bottom border.
-- **Links:** Uppercase label type (`0.78rem`, `0.14em`), cream-dim at rest, brass-light on hover/focus, with a brass underline that wipes in left-to-right (`right: 100% -> 0`).
-- **Wayfinding marks:** A wordmark (collapses to "HP" under 460px) and an "On view" brass pill with a pulsing-dot motif.
-- **Hero foot + footer links** repeat the pattern: brass dot/bullet, cream text, brass-light on hover.
+- **Header links:** Plain text in `muted`, no underline, shifting to `text` on hover; sticky translucent bar with a hairline bottom border. Wordmark "Hasitha Pathiraja" collapses to "HP" under 460px.
+- **Footer links:** `text` with a 1px `line-strong` bottom border; hover shifts both text and border to the accent.
+- **Hero body links:** Underlined in `line-strong`, colored `text`; hover moves underline and text to the accent.
 
-### Paper Label (signature)
-- The recurring museum caption: `paper` (#f1ebdd) background, `ink` text, `2px` radius, a fractal-noise grain overlay (`mix-blend-mode: multiply`, opacity 0.1), inset press shadows, and a debossed text-shadow on the name (`0 1px 0 rgba(255,253,245,0.55)`). Holds an object number (brass-dark, wide uppercase), a display title, and a uppercase spec line.
-
-### Framed Object (signature)
-- A matted monogram plate: `wall-lift -> wall-deep` linear gradient, 1px brass-hairline border, `3px` radius, a 1px brass inner mat (`::after`, inset 7px), object drop-shadow, and a `picture-light` wash. The monogram mark is display-font, 800, brass-light. On hover the frame lifts `translateY(-3px)` and the picture-light goes to full opacity.
-
-### Provenance Timeline (signature)
-- A bordered `4px` panel with a vertical brass-gradient spine. Each entry has a brass-ringed node (filled brass with a soft halo when `.current`), an uppercase phase label (cream-faint), a display-font org (brass-light when current), and a cream-dim role line.
-
-### Field-Notes List
-- A hairline-divided ordered list: a large brass display numeral, a brass-light uppercase tag over a display-font title, and a "Soon"/status label. Hover tints the row (`rgba(45,42,35,0.4)`) and nudges padding-left for a slide-in.
+### Text Links (global)
+- Default `a` is accent, `accent-hover` on hover, with `text-underline-offset: 0.18em` and `text-decoration-thickness: from-font`.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep brass as the sole accent, tuned by surface: `--brass` for rules/fills, `--brass-lt` for small text on the wall, `--brass-dk` for small text on paper.
-- **Do** draw every border and divider as a 1px brass hairline (`--wall-line`), never a neutral gray.
-- **Do** give framed objects the 1px brass inner mat and the picture-light; lift and brighten on hover rather than enlarging shadows.
-- **Do** set titles heavy and tight (Bricolage 800, -0.035em) and captions as wide-tracked uppercase Hanken at the `0.72rem` floor.
-- **Do** gate the signature picture-light interaction behind `pointer: fine` and `prefers-reduced-motion`, as shipped.
-- **Do** match ink to surface: cream ramp on the wall, ink ramp on paper.
+- **Do** build the entire hierarchy from Geist in size and weight (400 body, 500 labels/post titles, 600 headings). One typeface only.
+- **Do** author every color against its role token (`var(--muted)`, `var(--accent)`), so both the light and dark skins resolve correctly.
+- **Do** separate sections with full-bleed 1px `line` rules and outline components with 1px `line-strong` hairlines.
+- **Do** keep the accent rare - links, focus ring, "Read"/"Visit" affordances, selection, and the single hero wash.
+- **Do** track headings tight (`-0.03em`, hero `-0.035em`) with `text-wrap: balance`, over a relaxed 1.65 body held to 66ch.
+- **Do** provide light and dark variants for any brand mark and switch them with the resolved theme, as the logo chip does.
+- **Do** respect `prefers-reduced-motion` (transitions collapse to ~0) and keep a visible accent `:focus-visible` outline.
 
 ### Don't:
-- **Don't** introduce a second accent hue or a cool gray; the room is warm charcoal + paper + brass only.
-- **Don't** put cream text on a paper label or dark ink on the charcoal wall.
-- **Don't** soften the world into rounded UI - corners stay at 2-4px; pills are only for status chips.
-- **Don't** add resting drop-shadows to flat surfaces or make hover grow shadows; depth is lighting, not float.
-- **Don't** center an avatar or reduce the identity to a one-line bio; objects hang as labeled plates in a salon hang.
-- **Don't** drop micro-labels below `0.72rem`.
+- **Don't** add a second typeface for display, mono, or labels.
+- **Don't** introduce a second accent hue or a cool gray line; the world is paper/ink neutrals plus one ink blue.
+- **Don't** add drop shadows or floating cards; lift a region with a `surface` tone and a hairline instead.
+- **Don't** add gradients or glows beyond the one hero radial wash.
+- **Don't** place a hero image or stock photography; the hero is type plus the accent wash only.
+- **Don't** hardcode a hex in component CSS where a role token exists - it will break one of the two themes.
+- **Don't** drop the uppercase `meta` label below `0.74rem` or its `0.12em` tracking.
