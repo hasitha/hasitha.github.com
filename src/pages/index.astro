@@ -18,7 +18,7 @@ const arrow =
         <h1 class="hero-title">I build products, and I help engineers become better leaders.</h1>
         <p class="hero-lede">
           I'm a product-focused engineering leader based in Toronto, and currently the CTO of
-          Precision Nutrition. I also run two companies of my own:
+          Precision Nutrition. I also run two companies of my own:{' '}
           <a href="#work">Infinitech Studios</a> and <a href="#work">Purpose Driven Leader</a>.
         </p>
         <p class="hero-note">
@@ -195,12 +195,12 @@ const arrow =
     color: var(--muted);
   }
   .hero-lede a {
-    color: var(--text);
+    color: var(--accent);
     text-decoration: underline;
-    text-decoration-color: var(--line-strong);
-    transition: text-decoration-color 0.2s var(--ease-out);
+    text-decoration-color: color-mix(in srgb, var(--accent) 38%, transparent);
+    transition: text-decoration-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
   }
-  .hero-lede a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+  .hero-lede a:hover { text-decoration-color: var(--accent); color: var(--accent-hover); }
   .hero-note { margin-top: 1.25rem; color: var(--faint); font-size: 1rem; max-width: 50ch; }
 
   /* sections */

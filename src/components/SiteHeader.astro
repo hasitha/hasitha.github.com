@@ -25,16 +25,23 @@ import { nav } from '../data/site';
 <script>
   const btn = document.querySelector('.theme-toggle');
   if (btn) {
+    const root = document.documentElement;
+    const resolve = () =>
+      root.getAttribute('data-theme') ||
+      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const syncLabel = () => {
+      const label = resolve() === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+      btn.setAttribute('aria-label', label);
+      btn.setAttribute('title', label);
+    };
+    syncLabel();
     btn.addEventListener('click', () => {
-      const root = document.documentElement;
-      const resolved =
-        root.getAttribute('data-theme') ||
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      const next = resolved === 'dark' ? 'light' : 'dark';
+      const next = resolve() === 'dark' ? 'light' : 'dark';
       root.setAttribute('data-theme', next);
       try {
         localStorage.setItem('theme', next);
       } catch (e) {}
+      syncLabel();
     });
   }
 </script>
