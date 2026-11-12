@@ -82,11 +82,10 @@ export const nav: NavItem[] = [
   { label: 'Contact', href: '#contact' },
 ];
 
-// PLACEHOLDER links - confirm/replace with owner. GitHub handle is known (hasitha).
-// Email intentionally omitted until the owner approves publishing it publicly.
-export const elsewhere: NavItem[] = [
-  { label: 'GitHub', href: 'https://github.com/hasitha' },
-  { label: 'LinkedIn', href: '#' },
-  { label: 'X', href: '#' },
-  { label: 'Email', href: '#' },
+export type SocialLink = { key: 'github' | 'linkedin' | 'email'; label: string; href: string };
+
+export const elsewhere: SocialLink[] = [
+  { key: 'github', label: 'GitHub', href: 'https://github.com/hasitha' },
+  { key: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/hasitha/' },
+  { key: 'email', label: 'Email', href: 'mailto:hasitha@infinitechstudios.com' },
 ];
