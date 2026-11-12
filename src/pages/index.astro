@@ -1,37 +1,267 @@
 ---
-import Layout from '../layouts/Layout.astro'
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { ventures, provenance, posts } from '../data/site';
 
-import { profile } from '@/settings'
-import { publications } from '@/data/cv'
-import ProfilePictures from '@/assets/profile_pictures.jpg'
-import Hero from '@/components/ui/Hero.astro'
-import Grid from '@/components/ui/Grid.astro'
-import ArticleList from '@/components/ui/ArticleList.astro'
-
-const { fullName, title, institute, research_areas } = profile
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const arrow =
+  '<svg class="arrow" viewBox="0 0 22 12" fill="none" aria-hidden="true"><path d="M1 6h18m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 ---
 
 <Layout>
-	<!-- Hero Section -->
-	<section class='flex items-center gap-12 border-b pb-12'>
-		<Hero
-			fullName={fullName}
-			title={title}
-			institute={institute}
-			profilePicture={ProfilePictures}
-		/>
-	</section>
+  <SiteHeader />
 
-	<!-- Research Areas -->
-	<section class='py-12 border-b'>
-		<Grid gridTitle='Research Areas' gridItems={research_areas} />
-	</section>
+  <main id="main">
+    <!-- ===================== HERO ===================== -->
+    <section id="top" class="hero">
+      <div class="wrap">
+        <h1 class="hero-title">I build products, and I help engineers become better leaders.</h1>
+        <p class="hero-lede">
+          I'm a product-focused engineering leader based in Toronto, and currently the CTO of
+          Precision Nutrition. I also run two companies of my own:
+          <a href="#work">Infinitech Studios</a> and <a href="#work">Purpose Driven Leader</a>.
+        </p>
+        <p class="hero-note">
+          Before Precision Nutrition, I led engineering teams at Shopify and PathFactory.
+        </p>
+      </div>
+    </section>
 
-	<!-- Recent Publications -->
-	<section class='py-12 border-t'>
-		<ArticleList listTitle='Recent Publications' listItems={publications} />
-	</section>
+    <!-- ===================== WORK ===================== -->
+    <section id="work" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Two companies</h2>
+          <p class="section-sub">One builds products. One builds leaders.</p>
+        </div>
+
+        <div class="companies">
+          {ventures.map((v) => (
+            <article class="company">
+              <span class="logo-chip">
+                <picture>
+                  <source srcset={v.logoDark} media="(prefers-color-scheme: dark)" />
+                  <img src={v.logo} alt={`${v.name} logo`} width="40" height="40" loading="lazy" />
+                </picture>
+              </span>
+              <h3 class="company-name">{v.name}</h3>
+              <p class="company-desc">{v.blurb}</p>
+              <a class="inline-link" href={v.url} rel="noopener">
+                Visit {v.url.replace('https://', '').replace(/\/$/, '')}
+                <Fragment set:html={arrow} />
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WRITING ===================== -->
+    <section id="writing" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Writing</h2>
+          <p class="section-sub">
+            Essays on engineering leadership, published at Purpose Driven Leader.
+          </p>
+        </div>
+
+        <ul class="posts">
+          {posts.map((p) => (
+            <li>
+              <a class="post" href={p.url} rel="noopener">
+                <span class="post-tag meta">{p.tag}</span>
+                <span class="post-title">{p.title}</span>
+                <span class="post-read">
+                  Read <Fragment set:html={arrow} />
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section id="about" class="section">
+      <div class="wrap about">
+        <div class="section-head">
+          <h2>About</h2>
+        </div>
+        <div class="about-body">
+          <div class="bio">
+            <p>
+              I've spent two decades building software and the teams that make it: leading
+              engineering through growth, and now building a couple of things of my own.
+            </p>
+            <p>
+              Along the way I've cared less about titles and more about the people doing the
+              work, which is the thread that runs through everything here.
+            </p>
+          </div>
+          <div class="experience">
+            <p class="meta exp-label">Experience</p>
+            <ul class="exp-list">
+              {provenance.map((e) => (
+                <li>
+                  <span class="exp-org">{e.org}</span>
+                  <span class="exp-role">{e.role}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <SiteFooter />
 </Layout>
+
+<style>
+  .hero {
+    padding-top: clamp(3.5rem, 9vw, 7rem);
+    padding-bottom: clamp(2rem, 5vw, 4rem);
+  }
+  .hero-title {
+    font-size: clamp(2.4rem, 6vw, 4.25rem);
+    max-width: 18ch;
+    letter-spacing: -0.035em;
+  }
+  .hero-lede {
+    margin-top: clamp(1.5rem, 3vw, 2.25rem);
+    max-width: 54ch;
+    font-size: clamp(1.15rem, 1.4vw, 1.4rem);
+    line-height: 1.5;
+    color: var(--muted);
+  }
+  .hero-lede a {
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-color: var(--line-strong);
+    transition: text-decoration-color 0.2s var(--ease-out);
+  }
+  .hero-lede a:hover { text-decoration-color: var(--accent); color: var(--accent); }
+  .hero-note { margin-top: 1.25rem; color: var(--faint); font-size: 1rem; max-width: 50ch; }
+
+  /* sections */
+  .section { position: relative; padding: var(--section-y) 0; }
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--line);
+  }
+  .section-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
+  .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); }
+  .section-sub { margin-top: 0.6rem; color: var(--muted); font-size: 1.1rem; max-width: var(--measure); }
+
+  /* arrow (shared) */
+  :global(.arrow) {
+    width: 20px;
+    height: 11px;
+    display: inline-block;
+    vertical-align: -1px;
+    margin-left: 0.1rem;
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  .inline-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--accent);
+  }
+  .inline-link:hover :global(.arrow) { transform: translateX(4px); }
+
+  /* companies */
+  .companies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+  }
+  .company { display: flex; flex-direction: column; align-items: flex-start; }
+  .logo-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px;
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .logo-chip img { width: 40px; height: 40px; object-fit: contain; display: block; }
+  .company-name { font-size: clamp(1.35rem, 2.2vw, 1.75rem); }
+  .company-desc {
+    margin: 0.85rem 0 1.4rem;
+    color: var(--muted);
+    max-width: 42ch;
+    font-size: 1.06rem;
+  }
+  .company .inline-link { margin-top: auto; }
+
+  /* writing */
+  .posts { list-style: none; padding: 0; margin: 0; }
+  .posts li { border-top: 1px solid var(--line); }
+  .posts li:last-child { border-bottom: 1px solid var(--line); }
+  .post {
+    display: grid;
+    grid-template-columns: 11rem 1fr auto;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 1.6rem 0.25rem;
+    text-decoration: none;
+    color: inherit;
+    transition: padding-left 0.25s var(--ease-out);
+  }
+  .post:hover { padding-left: 0.75rem; }
+  .post-tag { align-self: center; }
+  .post-title {
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    transition: color 0.2s var(--ease-out);
+  }
+  .post:hover .post-title { color: var(--accent); }
+  .post-read {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--accent);
+    font-size: 0.92rem;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .post:hover .post-read :global(.arrow) { transform: translateX(4px); }
+
+  /* about */
+  .about-body {
+    display: grid;
+    grid-template-columns: 1fr 15rem;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+  .bio { max-width: var(--measure); display: flex; flex-direction: column; gap: 1.1rem; }
+  .bio p { color: var(--muted); font-size: 1.12rem; }
+  .exp-label { margin-bottom: 1rem; }
+  .exp-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.1rem; }
+  .exp-list li { display: flex; flex-direction: column; gap: 0.1rem; }
+  .exp-org { font-weight: 600; color: var(--text); }
+  .exp-role { color: var(--faint); font-size: 0.95rem; }
+
+  @media (max-width: 760px) {
+    .companies { grid-template-columns: 1fr; }
+    .about-body { grid-template-columns: 1fr; }
+    .post { grid-template-columns: 1fr auto; gap: 0.3rem 1rem; }
+    .post-tag { grid-column: 1; }
+    .post-title { grid-column: 1 / -1; }
+    .post-read { grid-column: 2; grid-row: 1; justify-self: end; }
+  }
+</style>

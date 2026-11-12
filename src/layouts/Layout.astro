@@ -1,102 +1,41 @@
 ---
-import { ClientRouter } from 'astro:transitions';
+import '@fontsource-variable/geist';
+import '../styles/global.css';
 
-import BetterIcon from '../components/ui/BetterIcon.astro'
-import DarkLightController from '../components/ui/DarkLightController.astro'
-import Navbar from '../components/ui/Navbar.astro'
-import Head from '../components/Head.astro'
-
-import { seo, profile, template } from '../settings'
-import Footer from '../components/ui/Footer.astro'
-
-type Props = {
-	title?: string
-	description?: string
-	image?: string
+interface Props {
+  title?: string;
+  description?: string;
 }
 
 const {
-	title = seo.default_title,
-	description = seo.default_description,
-	image = seo.default_image,
-} = Astro.props
+  title = 'Hasitha Pathiraja',
+  description = 'Hasitha Pathiraja is a product-focused engineering leader in Toronto. CTO of Precision Nutrition, founder of Infinitech Studios and Purpose Driven Leader.',
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://hasitha.github.io');
 ---
 
 <!doctype html>
-<html lang='en'>
-	<head>
-		{template.transitions && <ClientRouter /> }
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical.href} />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#faf8f3" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#131418" />
+    <meta name="generator" content={Astro.generator} />
 
-		<Head title={title} description={description} image={image} />
-
-
-
-	</head>
-	<body>
-		<div class={`bg-base-100 drawer lg:drawer-open ${template.menu_left ? 'drawer-end' : ''}`}>
-			<input id='my-drawer' type='checkbox' class='drawer-toggle' />
-			<!-- Drawer content -->
-            <div class='drawer-content bg-base-100'>
-				<div class='bg-base-100 z-50 text-base-content shadow-sm'>
-					<nav class='navbar'>
-						<div class='navbar-start'>
-							{template.menu_left &&
-								<DarkLightController/>
-							}
-							<label for='my-drawer' class='btn btn-square btn-ghost lg:hidden'>
-								<BetterIcon>
-									<svg
-										xmlns='http://www.w3.org/2000/svg'
-										fill='none'
-										viewBox='0 0 24 24'
-										stroke-width='1.5'
-										class='size-6 stroke-current'
-									>
-										<path
-											stroke-linecap='round'
-											stroke-linejoin='round'
-											d='M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5'></path>
-									</svg>
-								</BetterIcon>
-							</label>
-						</div>
-						<div class='navbar-center lg:hidden text-lg font-black'>
-							{profile.title}
-							{profile.fullName}
-						</div>
-						<div class='navbar-end'>
-							{!template.menu_left &&
-								<DarkLightController/>
-							}
-						</div>
-					</nav>
-				</div>
-                <main class='p-8 pt-10 lg:pt-16 lg:max-w-5xl max-w-full mx-auto min-h-screen flex flex-col justify-between'>
-					<!-- Page content -->
-					<slot />
-				<Footer />
-				</main>
-			</div>
-			<!-- Drawer side -->
-			<div class='drawer-side z-40'>
-				<label for='my-drawer' aria-label='close sidebar' class='drawer-overlay'
-				></label>
-				<Navbar />
-			</div>
-		</div>
-	</body>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical.href} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+  </body>
 </html>
-
-<style>
-	@media (prefers-color-scheme: dark) {
-		:root {
-			--my-color: #252b30;
-		}
-	}
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
