@@ -46,6 +46,56 @@ import { nav } from '../data/site';
   }
 </script>
 
+<script>
+  // Scroll-spy: mark the nav item for the section currently in view.
+  const navLinks = Array.from(document.querySelectorAll('.site-header .nav a[href^="#"]'));
+  const sections = navLinks
+    .map((link) => {
+      const el = document.getElementById(link.getAttribute('href').slice(1));
+      return el ? { id: el.id, el, link } : null;
+    })
+    .filter(Boolean);
+
+  if (sections.length) {
+    let currentId;
+    const setCurrent = (id) => {
+      if (id === currentId) return;
+      currentId = id;
+      for (const s of sections) {
+        if (s.id === id) s.link.setAttribute('aria-current', 'true');
+        else s.link.removeAttribute('aria-current');
+      }
+    };
+
+    const update = () => {
+      const line = 90; // activation line, just below the sticky header
+      let active = null;
+      for (const s of sections) {
+        if (s.el.getBoundingClientRect().top <= line) active = s.id;
+      }
+      // At the very bottom, make sure the last section (Contact) wins.
+      const atBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
+      if (atBottom) active = sections[sections.length - 1].id;
+      setCurrent(active);
+    };
+
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        update();
+        ticking = false;
+      });
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+</script>
+
 <style>
   .site-header {
     position: sticky;
@@ -81,11 +131,26 @@ import { nav } from '../data/site';
     font-size: 0.95rem;
   }
   .nav a {
+    position: relative;
     color: var(--muted);
     text-decoration: none;
     transition: color 0.2s var(--ease-out);
   }
+  .nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.45em;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.25s var(--ease-out);
+  }
   .nav a:hover { color: var(--text); }
+  .nav a[aria-current] { color: var(--text); }
+  .nav a[aria-current]::after { transform: scaleX(1); }
 
   @media (max-width: 460px) {
     .wordmark { font-size: 0; }
