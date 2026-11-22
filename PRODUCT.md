@@ -37,10 +37,12 @@ leave room to add ventures and interests over time without needing a rewrite.
 
 ## Operating Context
 
-- Static site built with Astro, deployed to GitHub Pages at `hasitha.github.io`.
-- Custom domain `hasitha.ca` is owned and planned to be mapped via GitHub Pages (CNAME)
-  later; at that point Astro's `site` becomes `https://hasitha.ca`. Staying on
-  `hasitha.github.io` for now. (Open decision: when to map the domain.)
+- Static site built with Astro, deployed to GitHub Pages and served at the custom apex
+  domain `hasitha.ca` (registered via GoDaddy). The apex is canonical; `www.hasitha.ca`
+  redirects to it, and `hasitha.github.io` redirects to the custom domain. The domain is
+  set through the deployed `public/CNAME` file, and Astro's `site` is `https://hasitha.ca`.
+  DNS lives at GoDaddy: four GitHub Pages `A` records (plus `AAAA`) on the apex and a `www`
+  `CNAME` -> `hasitha.github.io`.
 - Discovery is primarily organic search on his name plus links shared person-to-person,
   so owning his name in search matters.
 - Both companies have their own live websites and logos that this site links out to and
