@@ -22,10 +22,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://hasitha.ca'
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline>
       (function () {
+        // Default to dark; a saved choice (from the toggle) always wins.
+        var t;
         try {
-          var t = localStorage.getItem('theme');
-          if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+          t = localStorage.getItem('theme');
         } catch (e) {}
+        if (t !== 'light' && t !== 'dark') t = 'dark';
+        document.documentElement.setAttribute('data-theme', t);
       })();
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

@@ -60,9 +60,9 @@ leave room to add ventures and interests over time without needing a rewrite.
   hosted on this site is a planned future addition, not built yet.
 - Newsletter: a possible future addition, not committed. (Undecided - do not build or
   imply it until confirmed.)
-- Light and dark modes: follows the OS preference, with a manual toggle that persists the
-  visitor's choice. No stock hero imagery, minimal JavaScript, mobile-first, WCAG AA
-  contrast.
+- Light and dark modes: defaults to dark, with a manual toggle that persists the visitor's
+  choice across visits (a saved choice always wins over the default). No stock hero imagery,
+  minimal JavaScript, mobile-first, WCAG AA contrast.
 - Terminology: "PDL" is internal shorthand between the owner and collaborators only. In
   any visitor-facing site copy, always write the company name in full as "Purpose Driven
   Leader" - never "PDL".

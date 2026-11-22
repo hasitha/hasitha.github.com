@@ -123,7 +123,7 @@ components:
 
 **Creative North Star: "The Quiet Reading Room, After Dark"**
 
-This is a one-page personal hub that reads like a well-set page from a book - a calm, left-aligned column of warm paper where restraint is the credibility signal: no hero image, no stock photography, no cards, no decorative chrome. A twenty-year engineering leader and his two ventures are presented in a single centered measure, sections stacked and separated by content-aligned hairlines rather than boxes. One typeface (Geist) carries the whole hierarchy through size and weight alone. The page is deliberately dual-native: a warm off-white day mode and a cool near-black night mode, driven by the OS preference and overridable by a persistent manual toggle applied before paint, so there is no flash.
+This is a one-page personal hub that reads like a well-set page from a book - a calm, left-aligned column of warm paper where restraint is the credibility signal: no hero image, no stock photography, no cards, no decorative chrome. A twenty-year engineering leader and his two ventures are presented in a single centered measure, sections stacked and separated by content-aligned hairlines rather than boxes. One typeface (Geist) carries the whole hierarchy through size and weight alone. The page is deliberately dual-native: a warm off-white day mode and a cool near-black night mode. It defaults to the night mode, overridable by a persistent manual toggle applied before paint, so there is no flash.
 
 What has grown since the first pass is atmosphere and a second signal color. The paper is no longer inert: a faint accent-tinted **starfield** drifts slowly behind everything, a faint film-grain sits over everything, and a **blueprint grid** draws hairline guides at the content-column edges with small "+" ticks where the section dividers meet them. The dividers themselves are content-aligned hairlines that fade at the ends. And the one-accent discipline has become a deliberate **two-color** split: deep ink blue is still spent only on interaction (links, focus, "Read"/"Visit", buttons), while a warm **amber** is reserved for emphasis - the phrase "real value" in the hero headline - and a sibling amber-brown marks the contact form's success message. Blue means you can act; amber means pay attention. They never trade jobs.
 
@@ -232,7 +232,7 @@ For each component, a short character line, then shape, color assignment, states
 ### Theme Toggle
 - **Character:** A quiet 36x36 icon button in the header, the only persistent control.
 - **Shape / color:** Transparent fill, 1px `line-strong` border, `9px` radius; icon in `muted`.
-- **States:** Hover shifts icon to `text` and border to `faint`. The 17px moon/sun SVG swaps to the resolved theme (moon when light, sun when dark). Click sets `data-theme` on `<html>` and persists to `localStorage`; a pre-paint inline script applies the stored choice before first render to avoid a flash.
+- **States:** Hover shifts icon to `text` and border to `faint`. The 17px moon/sun SVG swaps to the resolved theme (moon when light, sun when dark). Click sets `data-theme` on `<html>` and persists to `localStorage`; a pre-paint inline script applies the stored choice - defaulting to dark when none is saved - before first render to avoid a flash.
 
 ### Skip Link
 - **Style:** Accent fill with `on-accent` text, `4px` radius, hidden above the viewport and sliding into view (`translateY`) on focus.
