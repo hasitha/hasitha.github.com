@@ -221,10 +221,12 @@ const arrow =
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2 * var(--gutter));
+    max-width: var(--maxw);
     height: 1px;
-    background: var(--line);
+    background: linear-gradient(90deg, transparent, var(--line-strong) 12%, var(--line-strong) 88%, transparent);
   }
   .section-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
   .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); }

@@ -55,9 +55,20 @@ const strokeIcon = (key: string) => key === 'email';
 
 <style>
   .site-footer {
-    border-top: 1px solid var(--line);
+    position: relative;
     margin-top: var(--section-y);
     padding-top: clamp(3rem, 6vw, 5rem);
+  }
+  .site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2 * var(--gutter));
+    max-width: var(--maxw);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-strong) 12%, var(--line-strong) 88%, transparent);
   }
   .inner {
     display: grid;
