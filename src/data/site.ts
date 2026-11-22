@@ -9,6 +9,9 @@ export const site = {
   portrait: '/portrait.jpg',
   // Personal Calendly link for an intro chat.
   booking: 'https://calendly.com/hasitha-pathiraja/intro',
+  // HubSpot form (PDL portal, "Personal Site Contact" form). Fill these in to
+  // make the contact form live; empty = form shows a "not configured" message.
+  hubspot: { portalId: '39776814', formId: '2bcdbc29-0e47-4354-819d-ddc923f9f39c' },
 };
 
 export type Venture = {
@@ -89,5 +92,4 @@ export type SocialLink = { key: 'github' | 'linkedin' | 'email'; label: string; 
 export const elsewhere: SocialLink[] = [
   { key: 'github', label: 'GitHub', href: 'https://github.com/hasitha' },
   { key: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/hasitha/' },
-  { key: 'email', label: 'Email', href: 'mailto:hasitha@infinitechstudios.com' },
 ];
