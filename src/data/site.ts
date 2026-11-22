@@ -68,17 +68,17 @@ export type Provenance = {
 
 // Sequence, not invented dates - exact years intentionally omitted until confirmed.
 export const provenance: Provenance[] = [
-  { org: 'Shopify', role: 'Senior engineering leader' },
   { org: 'PathFactory', role: 'Director of Engineering' },
+  { org: 'Shopify', role: 'Senior engineering leader' },
   { org: 'Precision Nutrition', role: 'Chief Technology Officer', current: true },
 ];
 
 export type NavItem = { label: string; href: string };
 
 export const nav: NavItem[] = [
+  { label: 'About', href: '#about' },
   { label: 'Work', href: '#work' },
   { label: 'Writing', href: '#writing' },
-  { label: 'About', href: '#about' },
   { label: 'Contact', href: '#contact' },
 ];
 

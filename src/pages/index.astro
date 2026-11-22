@@ -24,6 +24,55 @@ const arrow =
       </div>
     </section>
 
+    <!-- ===================== WHO I AM ===================== -->
+    <section id="about" class="section">
+      <div class="wrap about">
+        <div class="section-head">
+          <h2>Who I am</h2>
+        </div>
+        <div class="about-body">
+          <div class="about-portrait">
+            {site.portrait ? (
+              <img src={site.portrait} alt="Hasitha Pathiraja" width="400" height="400" loading="lazy" />
+            ) : (
+              <div class="portrait-placeholder" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="9" r="3.4" />
+                  <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+                </svg>
+                <span>Portrait</span>
+              </div>
+            )}
+          </div>
+          <div class="bio">
+            <p>👋 Hello there, I'm Hasitha.</p>
+            <p>
+              I've spent 20+ years developing software, most of it leading
+              engineering teams through fast growth.
+            </p>
+            <p>Over time, that pulled me in two directions
+              that I enjoy equally: helping companies build the right products, and helping the people
+              behind them grow into strong leaders. Right now, that's the mission I'm focused on.
+            </p>
+            <p>
+              When I'm not busy writing code, I play the violin, and perform as a magician / mentalist.
+            </p>
+          </div>
+          <div class="experience">
+            <p class="meta exp-label">My journey</p>
+            <ul class="exp-list">
+              {provenance.map((e) => (
+                <li>
+                  <span class="exp-org">{e.org}</span>
+                  <span class="exp-role">{e.role}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== WORK ===================== -->
     <section id="work" class="section">
       <div class="wrap">
@@ -75,52 +124,6 @@ const arrow =
         </ul>
       </div>
     </section>
-
-    <!-- ===================== ABOUT ===================== -->
-    <section id="about" class="section">
-      <div class="wrap about">
-        <div class="section-head">
-          <h2>About</h2>
-        </div>
-        <div class="about-body">
-          <div class="about-portrait">
-            {site.portrait ? (
-              <img src={site.portrait} alt="Hasitha Pathiraja" width="400" height="400" loading="lazy" />
-            ) : (
-              <div class="portrait-placeholder" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="9" r="3.4" />
-                  <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
-                </svg>
-                <span>Portrait</span>
-              </div>
-            )}
-          </div>
-          <div class="bio">
-            <p>
-              I've spent 20+ years in software, most of it leading engineering
-              teams through fast growth. Over time, that pulled me in two directions I enjoy
-              equally: helping companies build the right products, and helping the people
-              behind them grow into strong leaders.
-            </p>
-            <p>
-              When I'm not writing code, I play the violin, and I perform as a magician / mentalist.
-            </p>
-          </div>
-          <div class="experience">
-            <p class="meta exp-label">My journey</p>
-            <ul class="exp-list">
-              {provenance.map((e) => (
-                <li>
-                  <span class="exp-org">{e.org}</span>
-                  <span class="exp-role">{e.role}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
   </main>
 
   <SiteFooter />
@@ -145,12 +148,24 @@ const arrow =
     );
     pointer-events: none;
     z-index: 0;
+    animation: washDrift 26s ease-in-out infinite;
   }
   .hero > .wrap { position: relative; z-index: 1; }
+
+  /* Ambient life: the hero copy reveals on load; the wash drifts slowly. */
+  @keyframes heroRise {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes washDrift {
+    0%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
+    50% { transform: translate(-2.5%, 2%) scale(1.07); opacity: 0.82; }
+  }
   .hero-title {
     font-size: clamp(2.5rem, 6.6vw, 4.75rem);
     max-width: 17ch;
     letter-spacing: -0.035em;
+    animation: heroRise 1s ease-out both;
   }
 
   /* portrait frame - shared by the About portrait and its placeholder */
@@ -190,6 +205,7 @@ const arrow =
     font-size: clamp(1.15rem, 1.4vw, 1.4rem);
     line-height: 1.5;
     color: var(--muted);
+    animation: heroRise 1s ease-out both;
   }
   .hero-lede a {
     color: var(--accent);
