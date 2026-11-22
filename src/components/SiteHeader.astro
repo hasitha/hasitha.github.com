@@ -8,6 +8,7 @@ import { nav } from '../data/site';
     <div class="bar-right">
       <nav class="nav" aria-label="Primary">
         {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+        <span class="nav-indicator" aria-hidden="true"></span>
       </nav>
       <button class="theme-toggle" type="button" aria-label="Switch color theme" title="Switch color theme">
         <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -57,7 +58,26 @@ import { nav } from '../data/site';
     .filter(Boolean);
 
   if (sections.length) {
+    const indicator = document.querySelector('.site-header .nav-indicator');
     let currentId;
+
+    const linkFor = (id) => {
+      const s = sections.find((x) => x.id === id);
+      return s ? s.link : null;
+    };
+
+    // Slide the shared underline under the active link (or hide it when none).
+    const moveIndicator = (link) => {
+      if (!indicator) return;
+      if (link) {
+        indicator.style.width = link.offsetWidth + 'px';
+        indicator.style.transform = 'translateX(' + link.offsetLeft + 'px)';
+        indicator.style.opacity = '1';
+      } else {
+        indicator.style.opacity = '0';
+      }
+    };
+
     const setCurrent = (id) => {
       if (id === currentId) return;
       currentId = id;
@@ -65,6 +85,7 @@ import { nav } from '../data/site';
         if (s.id === id) s.link.setAttribute('aria-current', 'true');
         else s.link.removeAttribute('aria-current');
       }
+      moveIndicator(linkFor(id));
     };
 
     const update = () => {
@@ -90,9 +111,29 @@ import { nav } from '../data/site';
       });
     };
 
+    // Set the first position without animating in from the far left.
+    if (indicator) indicator.style.transition = 'none';
     update();
+    if (indicator) {
+      requestAnimationFrame(() => {
+        indicator.style.transition = '';
+      });
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener(
+      'resize',
+      () => {
+        onScroll();
+        moveIndicator(linkFor(currentId)); // link offsets change on resize
+      },
+      { passive: true }
+    );
+
+    // Re-measure once the web font settles, since text widths shift.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => moveIndicator(linkFor(currentId)));
+    }
   }
 </script>
 
@@ -126,31 +167,35 @@ import { nav } from '../data/site';
     white-space: nowrap;
   }
   .nav {
+    position: relative;
     display: flex;
     gap: clamp(1.1rem, 3vw, 2.2rem);
     font-size: 0.95rem;
   }
   .nav a {
-    position: relative;
     color: var(--muted);
     text-decoration: none;
-    transition: color 0.2s var(--ease-out);
-  }
-  .nav a::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -0.45em;
-    height: 2px;
-    border-radius: 2px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transition: transform 0.25s var(--ease-out);
+    transition: color 0.25s var(--ease-out);
   }
   .nav a:hover { color: var(--text); }
   .nav a[aria-current] { color: var(--text); }
-  .nav a[aria-current]::after { transform: scaleX(1); }
+  /* A single underline that slides between items as the active section changes. */
+  .nav-indicator {
+    position: absolute;
+    bottom: -0.45em;
+    left: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent);
+    opacity: 0;
+    transform: translateX(0);
+    transition:
+      transform 0.34s var(--ease-out),
+      width 0.34s var(--ease-out),
+      opacity 0.2s var(--ease-out);
+    pointer-events: none;
+  }
 
   @media (max-width: 460px) {
     .wordmark { font-size: 0; }
