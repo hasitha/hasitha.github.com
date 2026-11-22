@@ -13,6 +13,7 @@
   --accent: #1f3f7a;
   --accent-hover: #2a4f93;
   --on-accent: #ffffff;
+  --highlight: #b0701c; /* warm emphasis tone - never used for links */
   --line: #e7e2d6;
   --line-strong: #d7d1c3;
 
@@ -41,6 +42,7 @@
     --accent: #83a6e8;
     --accent-hover: #9cb8ee;
     --on-accent: #10131c;
+    --highlight: #d9a85c;
     --line: rgba(236, 233, 225, 0.14);
     --line-strong: rgba(236, 233, 225, 0.24);
   }
@@ -54,6 +56,7 @@
   --accent: #83a6e8;
   --accent-hover: #9cb8ee;
   --on-accent: #10131c;
+  --highlight: #d9a85c;
   --line: rgba(236, 233, 225, 0.14);
   --line-strong: rgba(236, 233, 225, 0.24);
 }
@@ -170,6 +173,29 @@ body::after {
   pointer-events: none;
   opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* Blueprint frame: faint vertical guides at the content-column edges. */
+.blueprint {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.blueprint::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--maxw);
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+@media (max-width: 760px) {
+  .blueprint { display: none; }
 }
 
 /* layout helpers */

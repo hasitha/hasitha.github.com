@@ -7,6 +7,8 @@ export const site = {
   // Portrait for the About section. Drop a file in public/ (e.g. public/portrait.jpg)
   // and set this to its path (e.g. '/portrait.jpg'). Empty = placeholder frame.
   portrait: '/portrait.jpg',
+  // Personal Calendly link for an intro chat.
+  booking: 'https://calendly.com/hasitha-pathiraja/intro',
 };
 
 export type Venture = {

@@ -15,11 +15,17 @@ const arrow =
     <!-- ===================== HERO ===================== -->
     <section id="top" class="hero">
       <div class="wrap">
-        <h1 class="hero-title">I help companies ship real value, and build the leaders behind it.</h1>
+        <h1 class="hero-title">I help companies ship <span class="highlight">real value</span>, and build the leaders behind it.</h1>
         <p class="hero-lede">
           I'm a product-focused engineering leader based in Toronto, and currently the CTO of
           Precision Nutrition. Alongside that, I run{' '}
           <a href="#work">Infinitech Studios</a> and <a href="#work">Purpose Driven Leader</a>.
+        </p>
+        <p class="hero-cta">
+          Want to connect?{' '}
+          <a class="chat-link" href={site.booking} target="_blank" rel="noopener">
+            Let's chat<Fragment set:html={arrow} />
+          </a>
         </p>
       </div>
     </section>
@@ -103,7 +109,7 @@ const arrow =
     <section id="writing" class="section">
       <div class="wrap">
         <div class="section-head">
-          <h2>Writing</h2>
+          <h2>What I've written about</h2>
           <p class="section-sub">
             My thoughts, learnings, and opinions.
           </p>
@@ -167,6 +173,9 @@ const arrow =
     letter-spacing: -0.035em;
     animation: heroRise 1s ease-out both;
   }
+  .highlight {
+    color: var(--highlight);
+  }
 
   /* portrait frame - shared by the About portrait and its placeholder */
   .about-portrait img,
@@ -214,19 +223,35 @@ const arrow =
     transition: text-decoration-color 0.2s var(--ease-out), color 0.2s var(--ease-out);
   }
   .hero-lede a:hover { text-decoration-color: var(--accent); color: var(--accent-hover); }
+  .hero-cta {
+    margin-top: 1.6rem;
+    color: var(--faint);
+    font-size: 1.02rem;
+  }
+  .chat-link {
+    color: var(--accent);
+    font-weight: 500;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .chat-link:hover { color: var(--accent-hover); }
+  .chat-link:hover :global(.arrow) { transform: translateX(4px); }
 
   /* sections */
   .section { position: relative; padding: var(--section-y) 0; }
   .section::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -5px;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% - 2 * var(--gutter));
+    width: 100%;
     max-width: var(--maxw);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--line-strong) 12%, var(--line-strong) 88%, transparent);
+    height: 10px;
+    background:
+      linear-gradient(90deg, transparent, var(--line-strong) 8%, var(--line-strong) 92%, transparent) center / 100% 1px no-repeat,
+      linear-gradient(var(--line-strong), var(--line-strong)) left center / 1px 9px no-repeat,
+      linear-gradient(var(--line-strong), var(--line-strong)) right center / 1px 9px no-repeat;
   }
   .section-head { margin-bottom: clamp(2rem, 4vw, 3rem); }
   .section-head h2 { font-size: clamp(1.6rem, 3vw, 2.25rem); }

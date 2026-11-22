@@ -1,5 +1,5 @@
 ---
-import { elsewhere } from '../data/site';
+import { site, elsewhere } from '../data/site';
 const year = new Date().getFullYear();
 
 const icons: Record<string, string> = {
@@ -21,6 +21,12 @@ const strokeIcon = (key: string) => key === 'email';
         I'm always happy to talk about building companies, leading engineering teams, or an
         idea you're trying to get off the ground.
       </p>
+      <a class="cta" href={site.booking} target="_blank" rel="noopener">
+        Let's chat
+        <svg class="cta-arrow" viewBox="0 0 22 12" fill="none" aria-hidden="true">
+          <path d="M1 6h18m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
     </div>
 
     <nav class="links" aria-label="Elsewhere">
@@ -47,28 +53,32 @@ const strokeIcon = (key: string) => key === 'email';
     </nav>
   </div>
 
-  <div class="wrap colophon">
-    <span>&copy; {year} Hasitha Pathiraja</span>
-    <span>Made in Toronto</span>
+  <div class="colophon">
+    <div class="wrap colo-row">
+      <span>&copy; {year} Hasitha Pathiraja</span>
+      <span>Made in Toronto</span>
+    </div>
   </div>
 </footer>
 
 <style>
   .site-footer {
     position: relative;
-    margin-top: var(--section-y);
     padding-top: clamp(3rem, 6vw, 5rem);
   }
   .site-footer::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: -5px;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% - 2 * var(--gutter));
+    width: 100%;
     max-width: var(--maxw);
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--line-strong) 12%, var(--line-strong) 88%, transparent);
+    height: 10px;
+    background:
+      linear-gradient(90deg, transparent, var(--line-strong) 8%, var(--line-strong) 92%, transparent) center / 100% 1px no-repeat,
+      linear-gradient(var(--line-strong), var(--line-strong)) left center / 1px 9px no-repeat,
+      linear-gradient(var(--line-strong), var(--line-strong)) right center / 1px 9px no-repeat;
   }
   .inner {
     display: grid;
@@ -87,6 +97,22 @@ const strokeIcon = (key: string) => key === 'email';
     color: var(--muted);
     font-size: 1.08rem;
   }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1.75rem;
+    padding: 0.72rem 1.35rem;
+    background: var(--accent);
+    color: var(--on-accent);
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s var(--ease-out);
+  }
+  .cta:hover { background: var(--accent-hover); }
+  .cta-arrow { width: 18px; height: 10px; transition: transform 0.25s var(--ease-out); }
+  .cta:hover .cta-arrow { transform: translateX(4px); }
   .links {
     display: flex;
     align-items: center;
@@ -102,12 +128,29 @@ const strokeIcon = (key: string) => key === 'email';
   .social svg { width: 22px; height: 22px; display: block; }
 
   .colophon {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .colophon::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: var(--maxw);
+    height: 10px;
+    background:
+      linear-gradient(90deg, transparent, var(--line-strong) 8%, var(--line-strong) 92%, transparent) center / 100% 1px no-repeat,
+      linear-gradient(var(--line-strong), var(--line-strong)) left center / 1px 9px no-repeat,
+      linear-gradient(var(--line-strong), var(--line-strong)) right center / 1px 9px no-repeat;
+  }
+  .colo-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    padding-block: 1.75rem 2.5rem;
-    border-top: 1px solid var(--line);
+    padding-top: 1.75rem;
     color: var(--faint);
     font-size: 0.85rem;
   }
