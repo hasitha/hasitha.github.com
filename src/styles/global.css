@@ -14,6 +14,7 @@
   --accent-hover: #2a4f93;
   --on-accent: #ffffff;
   --highlight: #b0701c; /* warm emphasis tone - never used for links */
+  --success: #8a5512; /* deeper amber, AA-legible for small status text */
   --line: #e7e2d6;
   --line-strong: #d7d1c3;
 
@@ -43,6 +44,7 @@
     --accent-hover: #9cb8ee;
     --on-accent: #10131c;
     --highlight: #d9a85c;
+    --success: #d9a85c;
     --line: rgba(236, 233, 225, 0.14);
     --line-strong: rgba(236, 233, 225, 0.24);
   }
@@ -57,6 +59,7 @@
   --accent-hover: #9cb8ee;
   --on-accent: #10131c;
   --highlight: #d9a85c;
+  --success: #d9a85c;
   --line: rgba(236, 233, 225, 0.14);
   --line-strong: rgba(236, 233, 225, 0.24);
 }

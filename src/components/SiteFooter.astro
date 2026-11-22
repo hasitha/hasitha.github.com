@@ -221,6 +221,10 @@ const strokeIcon = (key: string) => key === 'email';
     color: var(--muted);
     min-height: 1.2em;
   }
+  .form-status.is-success {
+    color: var(--success);
+    font-weight: 500;
+  }
 
   .colophon {
     position: relative;
@@ -269,6 +273,7 @@ const strokeIcon = (key: string) => key === 'email';
         return;
       }
       btn.disabled = true;
+      status.classList.remove('is-success');
       status.textContent = 'Sending...';
       try {
         const res = await fetch(
@@ -288,11 +293,14 @@ const strokeIcon = (key: string) => key === 'email';
         );
         if (res.ok) {
           form.reset();
+          status.classList.add('is-success');
           status.textContent = "Thanks! I'll get back to you soon.";
         } else {
+          status.classList.remove('is-success');
           status.textContent = 'Something went wrong. Please try again, or reach me on LinkedIn.';
         }
       } catch (err) {
+        status.classList.remove('is-success');
         status.textContent = 'Something went wrong. Please try again, or reach me on LinkedIn.';
       } finally {
         btn.disabled = false;
