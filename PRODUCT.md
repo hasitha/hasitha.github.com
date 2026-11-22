@@ -110,9 +110,16 @@ The established voice for all visitor-facing copy:
   - Purpose Driven Leader: "Coaching and training that helps engineering leaders get
     better at the craft of leadership."
 - Contact, public and owner-confirmed: GitHub (https://github.com/hasitha), LinkedIn
-  (https://www.linkedin.com/in/hasitha/), and email (hasitha@infinitechstudios.com). X is
+  (https://www.linkedin.com/in/hasitha/), a personal Calendly link for an intro call
+  (https://calendly.com/hasitha-pathiraja/intro), and a contact form in the footer. X is
   not used. The LinkedIn profile is currently focused on the Purpose Driven Leader
   positioning.
+- The email address is intentionally NOT published on the site (to avoid scraping);
+  visitors reach Hasitha through the contact form or the Calendly link instead. The form
+  posts to HubSpot (the Purpose Driven Leader portal, a dedicated "Personal Site Contact"
+  form) so submissions land as contacts there; portal and form IDs live in
+  `src/data/site.ts` (these are public client-side identifiers, not secrets). The form has
+  a honeypot field and native validation; there is no server of our own.
 - Writing: three real essays authored by Hasitha and published at Purpose Driven Leader
   are featured, linking out.
 - A portrait photo exists in the repo (`public/portrait.jpg`).
